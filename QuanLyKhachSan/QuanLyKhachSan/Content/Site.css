@@ -1,0 +1,30 @@
+﻿/* Navigation */ 
+.navbar {
+    height: 70px;
+    font-size: 14px;
+}
+.container-navbar {
+}
+/* Masthead */
+.masthead {
+    width: 100%;
+    height: 550px;
+    background-image: url(http://muongthanh.com/images/slideshow/2019/10/16/slideshow_large/true-viet-nam_banner-web_1_1571217576.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+/* Contact */
+.form-contact {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Footer */
+.text-uppercase-cus {
+    font-size:20px;
+}
+.lead-cus {
+    font-size:14px;
+}
