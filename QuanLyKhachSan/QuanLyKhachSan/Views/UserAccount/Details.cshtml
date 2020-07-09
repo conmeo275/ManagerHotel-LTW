@@ -1,0 +1,61 @@
+﻿@model QuanLyKhachSan.Models.UserAccount
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="form-horizontal">
+    <div class="container container-custom">
+        <div class="dl-cus">
+            <div>
+                <h4>Thông tin tài khoản</h4>
+            </div>
+            <hr />
+            <dl class="dl-horizontal">
+                <dt>
+                    @Html.DisplayNameFor(model => model.FullName)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.FullName)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.Email)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Email)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.Phone)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Phone)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.CMND)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.CMND)
+                </dd>
+            </dl>
+        </div>
+        <div class="edit-detail">
+            <div>
+                @Html.ActionLink("Sửa thông tin", "Edit", new { id = Model.UserID }, new { @class = "btn btn-info" })
+            </div>
+            <div>
+                @Html.ActionLink("Lịch sử đặt phòng", "History", new { id = Model.UserID }, new { @class = "btn btn-primary" })
+            </div>
+            <div>
+                @Html.ActionLink("Đăng xuất", "LogOut", "Authentication", new { area = "Admin" }, new { @class = "btn btn-danger" })
+            </div>
+        </div>
+    </div>
+</div>

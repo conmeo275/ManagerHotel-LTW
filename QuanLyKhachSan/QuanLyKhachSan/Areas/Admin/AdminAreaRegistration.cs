@@ -17,7 +17,7 @@ namespace QuanLyKhachSan.Areas.Admin
             context.MapRoute(
                 "Admin_default",
                 "Admin/{controller}/{action}/{id}",
-                new { controller= "HomeAdmin", action = "SoDoPhong", id = UrlParameter.Optional }
+                new {controller = "HomeAdmin", action = "MultipleModel", id = UrlParameter.Optional }
             );
         }
     }

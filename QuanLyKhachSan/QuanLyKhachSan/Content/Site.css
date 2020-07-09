@@ -1,9 +1,17 @@
 ﻿/* Navigation */ 
 .navbar {
-    height: 70px;
+    height: inherit;
     font-size: 14px;
 }
-.container-navbar {
+
+.container-custom {
+    padding-top: 28px;
+    margin-bottom: 28px;
+}
+
+
+.form-horizontal {
+    margin-top: 100px;
 }
 /* Masthead */
 .masthead {
@@ -21,10 +29,28 @@
     align-items: center;
 }
 
+.form-group {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.form-group-input {
+    text-align:center;
+}
 /* Footer */
 .text-uppercase-cus {
-    font-size:20px;
+    font-size: 20px;
 }
 .lead-cus {
     font-size:14px;
+}
+
+/*details UserAccount*/
+.dl-cus {
+    text-align: center;
+}
+
+.edit-detail {
+    display:flex;
+    justify-content: space-between;
 }

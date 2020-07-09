@@ -1,0 +1,65 @@
+﻿@model IEnumerable<QuanLyKhachSan.Areas.Admin.Models.Revervation>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<div class="container">
+    <br />
+    <center>
+        <h2>Danh sách giao dịch</h2>
+    </center>
+    <table class="table table-hover table-light">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Room.RoomName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.GuestName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.InDateTime)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.OutDateTime)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Paying)
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Room.RoomName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.GuestName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.InDateTime)
+                </td>
+                <th>
+                    @Html.DisplayFor(modelItem => item.OutDateTime)
+                </th>
+                <th>
+                    @if (@Html.DisplayFor(modelItem => item.OutDateTime) != null)
+                    {
+                        <p>Đang thuê</p>
+                    }
+                    else
+                    {
+                        <p>Đã thanh toán</p>
+                    }
+                </th>
+                <td>
+                    @Html.ActionLink("Chi tiết", "Details", new { id = item.ReverID }) |
+                    @Html.ActionLink("Xóa", "Delete", new { id = item.ReverID })
+                </td>
+            </tr>
+        }
+    </table>
+</div>

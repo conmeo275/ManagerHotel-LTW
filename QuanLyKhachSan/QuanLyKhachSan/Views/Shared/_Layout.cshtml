@@ -9,175 +9,51 @@
     <!-- Google fonts-->
     <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css" />
     <link href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet" type="text/css" />
-    <!-- Core theme CSS (includes Bootstrap)-->
-    <link href="~/Content/css/styles.css" rel="stylesheet" />
-    <link href="~/Content/Site.css" rel="stylesheet" />
+
+    @Styles.Render("~/Content/css")
+    @{
+        var guest = Session["User"] as QuanLyKhachSan.Models.UserAccount;
+    }
 </head>
 <body>
     <!-- Navigation-->
     <nav class="navbar navbar-expand-lg bg-secondary text-uppercase fixed-top" id="mainNav">
         <div class="container container-navbar">
-            <a class="navbar-brand js-scroll-trigger" href="#">Mường Thanh Hotel</a><button class="navbar-toggler navbar-toggler-right text-uppercase font-weight-bold bg-primary text-white rounded" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">Menu <i class="fas fa-bars"></i></button>
+            @Html.ActionLink("Mường Thanh Hotel", "Index", "Home", new { area = "" }, new { @class = "navbar-brand js-scroll-trigger" })<button class="navbar-toggler navbar-toggler-right text-uppercase font-weight-bold bg-primary text-white rounded" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">Menu <i class="fas fa-bars"></i></button>
             <div class="collapse navbar-collapse" id="navbarResponsive">
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#portfolio">Nổi bật</a></li>
                     <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#about">Về chúng tôi</a></li>
-                    <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#contact">Liên hệ</a></li>
+                    @if (guest != null)
+                    {
+                        <li class="nav-item mx-0 mx-lg-1">
+                            <a class="nav-link py-3 px-0 px-lg-3 rounded" href="@Url.Action("Room","OrderModel")">Đặt phòng</a>
+                        </li>
+                        <li class="nav-item mx-0 mx-lg-1">
+                            <a class="nav-link py-3 px-0 px-lg-3 rounded" href="@Url.Action("Details","UserAccount",new { id = guest.UserID })">Chào @guest.FullName</a>
+                        </li>
+                    }
+                    else
+                    {
+                        <li class="nav-item mx-0 mx-lg-1">
+                            @Html.ActionLink("Đặt phòng", "Login", "Authentication", new { area = "Admin" }, new { @class = "nav-link py-3 px-0 px-lg-3 rounded" })
+                        </li>
+                        <li class="nav-item mx-0 mx-lg-1">
+                            @Html.ActionLink("Đăng nhập", "Login", "Authentication", new { area = "Admin" }, new { @class = "nav-link py-3 px-0 px-lg-3 rounded" })
+                        </li>
+                    }
                 </ul>
             </div>
         </div>
     </nav>
     <!-- Masthead-->
-    <header class="masthead bg-primary text-white text-center">
-        <div class="container d-flex align-items-center flex-column">
-        </div>
-    </header>
-    <!-- Portfolio Section-->
-    <section class="page-section portfolio" id="portfolio">
-        <div class="container">
-            <!-- Portfolio Section Heading-->
-            <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">Nổi bật</h2>
-            <!-- Icon Divider-->
-            <div class="divider-custom">
-                <div class="divider-custom-line"></div>
-                <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
-                <div class="divider-custom-line"></div>
-            </div>
-            <!-- Portfolio Grid Items-->
-            <div class="row">
-                <!-- Portfolio Item 1-->
-                <div class="col-md-6 col-lg-4 mb-5">
-                    <div class="portfolio-item mx-auto" data-toggle="modal" data-target="#portfolioModal1">
-                        <div class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
-                            <div class="portfolio-item-caption-content text-center text-white"><i class="fas fa-plus fa-3x"></i></div>
-                        </div>
-                        <img class="img-fluid" src="https://www.hoteljob.vn/files/Anh-Hoteljob-Ni/Nam-2019/Bo-sung/luong-nhan-vien-le-tan-khach-san-4-5-sao-01.jpg" alt="overview" />
-                    </div>
-                </div>
-                <!-- Portfolio Item 2-->
-                <div class="col-md-6 col-lg-4 mb-5">
-                    <div class="portfolio-item mx-auto" data-toggle="modal" data-target="#portfolioModal2">
-                        <div class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
-                            <div class="portfolio-item-caption-content text-center text-white"><i class="fas fa-plus fa-3x"></i></div>
-                        </div>
-                        <img class="img-fluid" src="https://vietnamhoinhap.vn/local/resources/uploads/userfiles/images/suite.jpg" alt="tiennghi" />
-                    </div>
-                </div>
-                <!-- Portfolio Item 3-->
-                <div class="col-md-6 col-lg-4 mb-5">
-                    <div class="portfolio-item mx-auto" data-toggle="modal" data-target="#portfolioModal3">
-                        <div class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
-                            <div class="portfolio-item-caption-content text-center text-white"><i class="fas fa-plus fa-3x"></i></div>
-                        </div>
-                        <img class="img-fluid" src="https://previews.123rf.com/images/sarymsakov/sarymsakov1702/sarymsakov170200119/72244364-delicious-breakfast-for-two-at-the-luxury-hotel-.jpg" alt="breakfast" />
-                    </div>
-                </div>
-                <!-- Portfolio Item 4-->
-                <div class="col-md-6 col-lg-4 mb-5 mb-lg-0">
-                    <div class="portfolio-item mx-auto" data-toggle="modal" data-target="#portfolioModal4">
-                        <div class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
-                            <div class="portfolio-item-caption-content text-center text-white"><i class="fas fa-plus fa-3x"></i></div>
-                        </div>
-                        <img class="img-fluid" src="http://muongthanh.com/images/gallery/2019/06/14/original/dn2.jpg" alt="view" />
-                    </div>
-                </div>
-                <!-- Portfolio Item 5-->
-                <div class="col-md-6 col-lg-4 mb-5 mb-md-0">
-                    <div class="portfolio-item mx-auto" data-toggle="modal" data-target="#portfolioModal5">
-                        <div class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
-                            <div class="portfolio-item-caption-content text-center text-white"><i class="fas fa-plus fa-3x"></i></div>
-                        </div>
-                        <img class="img-fluid" src="http://muongthanh.com/images/Blog%20Du%20l%E1%BB%8Bch/Hu%E1%BA%BF%209.jpg" alt="travel" />
-                    </div>
-                </div>
-                <!-- Portfolio Item 6-->
-                <div class="col-md-6 col-lg-4">
-                    <div class="portfolio-item mx-auto" data-toggle="modal" data-target="#portfolioModal6">
-                        <div class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
-                            <div class="portfolio-item-caption-content text-center text-white"><i class="fas fa-plus fa-3x"></i></div>
-                        </div>
-                        <img class="img-fluid" src="https://bluecons.vn/wp-content/uploads/2019/09/spa.jpg" alt="spa" />
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- About Section-->
-    <section class="page-section bg-primary text-white mb-0" id="about">
-        <div class="container">
-            <!-- About Section Heading-->
-            <h2 class="page-section-heading text-center text-uppercase text-white">Về chúng tôi</h2>
-            <!-- Icon Divider-->
-            <div class="divider-custom divider-light">
-                <div class="divider-custom-line"></div>
-                <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
-                <div class="divider-custom-line"></div>
-            </div>
-            <!-- About Section Content-->
-            <div class="row">
-                <div class="col-lg-6 ml-auto">
-                    <h4>Lịch sử:</h4>
-                    <p class="lead">Thắp sáng bản đồ ngành lưu trú Việt Nam, khẳng định vị thế vững chắc cho riêng mình, Tập đoàn Khách sạn Mường Thanh đã tạo được chỗ đứng trong lòng khách hàng và du khách trong và ngoài nước. Là Hệ thống Khách sạn tư nhân lớn nhất tại Đông dương, Mường Thanh tự hào sở hữu gần 60 khách sạn với sức chứa hơn 10.000 phòng, tạo việc làm và môi trường phát triển cho hơn 10.000 lao động, đóng góp vào ngân sách quốc gia hàng ngàn tỷ đồng mỗi năm. Những thành quả ấn tượng đó được Mường Thanh hình thành và phát triển qua bề dày hơn 25 kinh nghiệm, sự đồng lòng tập thể và khát vọng không ngừng hoàn thiện và phát triển kinh doanh song hành mang lại lợi ích bền vững cho đất nước và con người Việt.</p>
-                </div>
-                <div class="col-lg-6 mr-auto">
-                    <h4>Sứ mệnh:</h4>
-                    <p class="lead">
-                        Sứ mệnh của Tập đoàn khách sạn Mường Thanh là cung cấp sản phẩm và dịch vụ khách sạn gắn liền với sự gìn giữ và phát triển các giá trị Việt.
-                        Giá trị Việt được Mường Thanh gìn giữ xây dựng trên chính những đức tính tốt đẹp của con người Việt, với niềm tin rằng du khách đặt chân đến mọi miền Việt Nam đều xứng đáng được trải nghiệm trọn vẹn nhất sự.
-                    </p>
-                    <h4>Tầm nhìn:</h4>
-                    <p class="lead">
-                        Mường Thanh không ngừng khát vọng và nỗ lực vươn tới mục tiêu trở thành Đại diện quốc gia ngành khách sạn Việt Nam.
-                        Hiện nay, Tập đoàn khách sạn Mường Thanh là thương hiệu thuần Việt, sở hữu hệ thống chuỗi khách sạn nội địa lớn nhất Việt Nam.
-                    </p>
-                </div>
-            </div>
-            <!-- About Section Button-->
-            <div class="text-center mt-4">
-                <a class="btn btn-xl btn-outline-light" href="http://muongthanh.com/">Xem thêm tại đây!</a>
-            </div>
-        </div>
-    </section>
+    @RenderSection("Masthead", required: false)
+    <!--Body-->
+    @RenderBody()
+    <!-- Special Section-->
+    @RenderSection("Special", required: false)
     <!-- Contact Section-->
-    <section class="page-section" id="contact">
-        <div class="container">
-            <!-- Contact Section Heading-->
-            <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">Liên hệ</h2>
-            <!-- Icon Divider-->
-            <div class="divider-custom">
-                <div class="divider-custom-line"></div>
-                <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
-                <div class="divider-custom-line"></div>
-            </div>
-            <!-- Contact Section Form-->
-            <div class="row">
-                <div class="col-lg-8 mx-auto">
-                    <!-- To configure the contact form email address, go to mail/contact_me.php and update the email address in the PHP file on line 19.-->
-                    <form>
-                        <div class="row">
-                            <div class="col">
-                                <input type="text" class="form-control" id="name" placeholder="Họ và tên" name="name">
-                            </div>
-                            <div class="col">
-                                <input type="text" class="form-control" id="email" placeholder="Email" name="email">
-                            </div>
-                            <div class="col">
-                                <input type="text" class="form-control" id="phone" placeholder="Số điện thoại" name="phone">
-                            </div>
-                        </div>
-                        <br />
-                        <div class="form-contact">
-                            <p>Hãy để lại thông tin của quý khách, chúng tôi sẽ liên hệ sớm nhất đến quý khách!</p>
-                        </div>
-                        <div class="form-contact">
-                            <div id="success"></div>
-                            <div class="form-group"><button class="btn btn-primary" id="sendMessageButton" type="submit">Gửi</button></div>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </section>
+    @RenderSection("About", required: false)
     <!-- Footer-->
     <footer class="footer text-center">
         <div class="container">
@@ -186,8 +62,8 @@
                 <div class="col-lg-4 mb-5 mb-lg-0">
                     <h4 class="text-uppercase text-uppercase-cus mb-4">Tổng công ty</h4>
                     <p class="lead lead-cus mb-0">
-                        Khách sạn Mường Thanh Grand Sài Gòn Centre <br/>
-                        Địa chỉ: Số 8A, Mạc Đĩnh Chi, phường Bến Nghé, Quận 1 , Thành Phố Hồ ChíMinh, Việt Nam<br />
+                        Khách sạn Mường Thanh Grand Sài Gòn Centre <br />
+                        Địa chỉ: Số 8A, Mạc Đĩnh Chi, phường Bến Nghé, Quận 1 , Thành Phố Hồ Chí Minh, Việt Nam<br />
                         Điện thoại: +84 283 827 9595<br />
                         Email: info@saigoncentre.muongthanh.vn
                     </p>
@@ -195,8 +71,8 @@
                 <!-- Footer About Text-->
                 <div class="col-lg-4">
                     <h4 class="text-uppercase text-uppercase-cus mb-4">Các chi nhánh</h4>
-                    <p class="lead lead-cus mb-0"> - Khách sạn Mường Thanh: Đường Tân Phú, Thành phố Nha Trang</p> <br />
-                    <p class="lead lead-cus mb-0"> - Khách sạn Mường Thanh: Đường Lê Lợi, Thành phố Đà Lạt</p> <br />
+                    <p class="lead lead-cus mb-0"> - Khách sạn Mường Thanh: Đường Tân Phú, Thành phố Nha Trang.<br /> HotLine: 090113113</p> <br />
+                    <p class="lead lead-cus mb-0"> - Khách sạn Mường Thanh: Đường Lê Lợi, Thành phố Đà Lạt.<br /> HotLine: 090113113</p> <br />
                 </div>
                 <!-- Footer Social Icons-->
                 <div class="col-lg-4 mb-5 mb-lg-0">
@@ -214,7 +90,7 @@
     <div class="scroll-to-top d-lg-none position-fixed">
         <a class="js-scroll-trigger d-block text-center text-white rounded" href="#page-top"><i class="fa fa-chevron-up"></i></a>
     </div>
-    @RenderBody()
+
 
     <!-- Bootstrap core JS-->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
@@ -222,10 +98,7 @@
     <!-- Third party plugin JS-->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>
     <!-- Contact form JS-->
-    <script src="~/Content/assets/mail/jqBootstrapValidation.js"></script>
-    <script src="~/Content/assets/mail/contact_me.js"></script>
-    <!-- Core theme JS-->
-    <script src="js/scripts.js"></script>
+    @Scripts.Render("~/bundlesA/jquery")
     @RenderSection("scripts", required: false)
 </body>
 </html>

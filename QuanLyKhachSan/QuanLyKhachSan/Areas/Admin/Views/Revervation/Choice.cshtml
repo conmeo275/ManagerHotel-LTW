@@ -1,0 +1,23 @@
+﻿
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+<center>
+    <div class="container">
+        <br />
+        <h2>Đặt phòng</h2>
+        <div class="form-horizontal">
+            <div class="form-group">
+                <div class=" col-md-4">
+                </div>
+            </div>
+            <hr />
+            <div class="btn-modal">
+                <a class="btn btn-outline-primary btn-modal-cus" href="@Url.Action("Create","Revervation", new { choice = 2206})">Khách hàng thân thiết</a>
+                <a class="btn btn-outline-secondary btn-modal-cus" href="@Url.Action("Create","Revervation", new { choice = 2705})">Khách vãng lai</a>
+            </div>
+        </div>
+    </div>
+</center>
+

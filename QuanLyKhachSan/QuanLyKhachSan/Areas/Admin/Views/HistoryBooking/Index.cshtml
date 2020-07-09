@@ -1,0 +1,80 @@
+﻿@model IEnumerable<QuanLyKhachSan.Models.OrderModel>
+
+@{
+    ViewBag.Title = "Danh sách đặt phòng";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<div class="container container-custom">
+    <br />
+    <h2>Danh sách đặt phòng</h2>
+    @using (Html.BeginForm("Find", "HistoryBooking", FormMethod.Get))
+    {
+        <div class="top-search-bar col-md-4">
+            <b> Tìm theo: </b>
+            @Html.RadioButton("option", "name")<text> Tên </text> 
+            @Html.RadioButton("option", "phone")<text> Số điện thoại </text>
+            @Html.TextBox("search") <input type="submit" name="submit" value="Tìm kiếm"/>
+        </div>
+    }
+    <br />
+    <table class="table table-light table-hover">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.OrderDateTime)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.UserAccount.FullName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.UserAccount.Phone)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.OrderRoom)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CheckIn)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CheckOut)
+            </th>
+            <th>
+                Tình trạng
+            </th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.OrderDateTime)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.UserAccount.FullName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.UserAccount.Phone)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.OrderRoom)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CheckIn)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CheckOut)
+                </td>
+                <td>
+                    @if (item.Status != true)
+                    {
+                        @Html.ActionLink("Confirm", "Confirm", new { id = item.OrderID })
+                    }
+                    else
+                    {
+                        <p>Đã liên hệ</p>
+                    }
+                </td>
+            </tr>
+        }
+    </table>
+</div>

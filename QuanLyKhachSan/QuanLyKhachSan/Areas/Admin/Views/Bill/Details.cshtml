@@ -1,0 +1,94 @@
+﻿@model QuanLyKhachSan.Areas.Admin.Models.Bill
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+<center>
+    <div class="container">
+        <br />
+        <h2>Hóa đơn</h2>
+
+        <div class="form-horizontal">
+            <hr />
+            <dl class="dl-horizontal">
+                <dt>
+                    @Html.DisplayNameFor(model => model.Payment.Revervation.Room.RoomName)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Payment.Revervation.Room.RoomName)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.Payment.Revervation.GuestName)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Payment.Revervation.GuestName)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.Payment.Revervation.InDateTime)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Payment.Revervation.InDateTime)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.Payment.Revervation.OutDateTime)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Payment.Revervation.OutDateTime)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.Payment.RoomFee)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Payment.RoomFee)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.Payment.ServiceFee)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Payment.ServiceFee)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.Payment.Amount)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Payment.Amount)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.Emp)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Emp)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.CurrentTime)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.CurrentTime)
+                </dd>
+
+            </dl>
+        </div>
+        <div class="btn-modal">
+            <a class="btn btn-primary btn-modal-cus" href="@Url.Action("MultipleModel", "HomeAdmin")">In hóa đơn</a>
+            <a class="btn btn-secondary btn-modal-cus" href="@Url.Action("MultipleModel", "HomeAdmin")">Hoàn tất</a>
+        </div>
+    </div>
+</center>

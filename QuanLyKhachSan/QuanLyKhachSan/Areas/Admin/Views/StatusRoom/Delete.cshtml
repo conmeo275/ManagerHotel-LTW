@@ -1,0 +1,49 @@
+﻿@model QuanLyKhachSan.Areas.Admin.Models.StatusRoom
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+
+<div class="container">
+    <br />
+    <h2>Xóa trạng thái phòng</h2>
+
+    <div class="form-horizontal">
+        <div class="form-group">
+            <div class=" col-md-4">
+                @Html.ActionLink("Quay lại danh sách", "Index")
+            </div>
+        </div>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.StatusName)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.StatusName)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.StatusColor)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.StatusColor)
+            </dd>
+
+        </dl>
+
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+
+            <div class="form-actions no-color">
+                <h3>Bạn có chắc chắn muốn xóa trạng thái này?</h3>
+                <input type="submit" value="Xóa" class="btn btn-danger" />
+            </div>
+        }
+    </div>
+</div>

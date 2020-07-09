@@ -1,0 +1,301 @@
+﻿@model QuanLyKhachSan.Areas.Admin.Models.Multi
+
+@{
+    ViewBag.Title = "Sơ đồ phòng";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<div class="container">
+    <br>
+    <!-- Nav tabs -->
+    <ul class="nav nav-tabs" role="tablist">
+        <li class="nav-item">
+            <a class="nav-link active" data-toggle="tab" href="#all">Tất cả</a>
+        </li>
+        @foreach (var item in Model.LStatusRooms())
+        {
+            <li class="nav-item">
+                <a class="nav-link" data-toggle="tab" href="#@item.StatusID">@item.StatusName - @item.Rooms.Count(x => x.StatusID == item.StatusID) </a>
+            </li>
+        }
+    </ul>
+
+    <!-- Tab panes -->
+    <div class="tab-content">
+        <div id="all" class="container tab-pane active">
+            <br>
+            <h2>Tất cả phòng</h2>
+            <h3>Tầng 1 (Standard):</h3>
+            <div class="row">
+                @foreach (var item in Model.LRooms())
+                {
+                    if (item.RoomName > 100 && item.RoomName <= 199)
+                    {
+                        <div class="col-sm offset-md-1 box_room">
+                            @if (item.StatusID != 3)
+                            {
+                                <div class="box_room-info" style="background-color:@Html.DisplayFor(modelItem => item.StatusRoom.StatusColor)">
+                                    <a class="box_room-modal" data-toggle="modal" data-target="#@item.RoomName">
+                                        <div class="box_room-label">
+                                            <h4>@Html.DisplayFor(modelItem => item.RoomName)</h4>
+                                        </div>
+                                        <div class="box_room-status">
+                                            <span>@Html.DisplayFor(modelItem => item.StatusRoom.StatusName)</span>
+                                        </div>
+                                    </a>
+                                </div>
+                            }
+                            else
+                            {
+                                foreach (var re in Model.LRevervations().Where(x => x.RoomId == item.RoomId))
+                                {
+                                    <div class="box_room-info" style="background-color:@Html.DisplayFor(modelItem => item.StatusRoom.StatusColor)">
+                                        <div class="box_room-label">
+                                            <h4>@Html.DisplayFor(modelItem => item.RoomName)</h4>
+                                        </div>
+                                        <div class="box_room-status">
+                                            <span>@Html.DisplayFor(modelItem => item.StatusRoom.StatusName)</span>
+                                        </div>
+                                    </div>
+                                    <div class="box_room-detail">
+                                        <a class="box_room-modal--active" data-toggle="modal" data-target="#@item.RoomName">
+                                            <table class="box_room-table">
+                                                <tr>
+                                                    <th>Người thuê: </th>
+                                                </tr>
+                                                <tr>
+                                                    <td><span class="box_room-span">@re.GuestName</span></td>
+                                                </tr>
+                                                <tr>
+                                                    <th>Check In: </th>
+                                                </tr>
+                                                <tr>
+                                                    <td><span class="box_room-span">@re.InDateTime</span></td>
+                                                </tr>
+                                            </table>
+                                        </a>
+                                    </div>
+                                }
+                            }
+                        </div>
+                    }
+                }
+            </div>
+            <hr />
+            <h3> Tầng 2(Superior):</h3>
+            <div class="row">
+                @foreach (var item in Model.LRooms())
+                {
+                    if (item.RoomName > 200 && item.RoomName <= 299)
+                    {
+                        <div class="col-sm offset-md-1 box_room">
+                            @if (item.StatusID != 3)
+                            {
+                                <div class="box_room-info" style="background-color:@Html.DisplayFor(modelItem => item.StatusRoom.StatusColor)">
+                                    <a class="box_room-modal" data-toggle="modal" data-target="#@item.RoomName">
+                                        <div class="box_room-label">
+                                            <h4>@Html.DisplayFor(modelItem => item.RoomName)</h4>
+                                        </div>
+                                        <div class="box_room-status">
+                                            <span>@Html.DisplayFor(modelItem => item.StatusRoom.StatusName)</span>
+                                        </div>
+                                    </a>
+                                </div>
+                            }
+                            else
+                            {
+                                foreach (var re in Model.LRevervations().Where(x => x.RoomId == item.RoomId))
+                                {
+                                    <div class="box_room-info" style="background-color:@Html.DisplayFor(modelItem => item.StatusRoom.StatusColor)">
+                                        <div class="box_room-label">
+                                            <h4>@Html.DisplayFor(modelItem => item.RoomName)</h4>
+                                        </div>
+                                        <div class="box_room-status">
+                                            <span>@Html.DisplayFor(modelItem => item.StatusRoom.StatusName)</span>
+                                        </div>
+                                    </div>
+                                    <div class="box_room-detail">
+                                        <a class="box_room-modal--active" data-toggle="modal" data-target="#@item.RoomName">
+                                            <table class="box_room-table">
+                                                <tr>
+                                                    <th>Người thuê: </th>
+                                                </tr>
+                                                <tr>
+                                                    <td><span class="box_room-span">@re.GuestName</span></td>
+                                                </tr>
+                                                <tr>
+                                                    <th>Check In: </th>
+                                                </tr>
+                                                <tr>
+                                                    <td><span class="box_room-span">@re.InDateTime</span></td>
+                                                </tr>
+                                            </table>
+                                        </a>
+                                    </div>
+                                }
+                            }
+                        </div>
+                    }
+                }
+            </div>
+            <hr />
+            <h3>Tầng 3 (Deluxe):</h3>
+            <div class="row">
+                @foreach (var item in Model.LRooms())
+                {
+                    if (item.RoomName > 300 && item.RoomName <= 399)
+                    {
+                        <div class="col-sm offset-md-1 box_room">
+                            @if (item.StatusID != 3)
+                            {
+                                <div class="box_room-info" style="background-color:@Html.DisplayFor(modelItem => item.StatusRoom.StatusColor)">
+                                    <a class="box_room-modal" data-toggle="modal" data-target="#@item.RoomName">
+                                        <div class="box_room-label">
+                                            <h4>@Html.DisplayFor(modelItem => item.RoomName)</h4>
+                                        </div>
+                                        <div class="box_room-status">
+                                            <span>@Html.DisplayFor(modelItem => item.StatusRoom.StatusName)</span>
+                                        </div>
+                                    </a>
+                                </div>
+                            }
+                            else
+                            {
+                                foreach (var re in Model.LRevervations().Where(x => x.RoomId == item.RoomId))
+                                {
+                                    <div class="box_room-info" style="background-color:@Html.DisplayFor(modelItem => item.StatusRoom.StatusColor)">
+                                        <div class="box_room-label">
+                                            <h4>@Html.DisplayFor(modelItem => item.RoomName)</h4>
+                                        </div>
+                                        <div class="box_room-status">
+                                            <span>@Html.DisplayFor(modelItem => item.StatusRoom.StatusName)</span>
+                                        </div>
+                                    </div>
+                                    <div class="box_room-detail">
+                                        <a class="box_room-modal--active" data-toggle="modal" data-target="#@item.RoomName">
+                                            <table class="box_room-table">
+                                                <tr>
+                                                    <th>Người thuê: </th>
+                                                </tr>
+                                                <tr>
+                                                    <td><span class="box_room-span">@re.GuestName</span></td>
+                                                </tr>
+                                                <tr>
+                                                    <th>Check In: </th>
+                                                </tr>
+                                                <tr>
+                                                    <td><span class="box_room-span">@re.InDateTime</span></td>
+                                                </tr>
+                                            </table>
+                                        </a>
+                                    </div>
+                                }
+                            }
+                        </div>
+                    }
+                }
+            </div>
+        </div>
+        @foreach (var st in Model.LStatusRooms())
+        {
+            <div id="@st.StatusID" class="container tab-pane fade">
+                <br>
+                <h3>@st.StatusName</h3>
+                <div class="row">
+                    @foreach (var item in Model.LRooms().Where(x => x.StatusID == st.StatusID))
+                    {
+                        <div class="col-sm offset-md-1 box_room">
+                            @if (item.StatusID != 3)
+                            {
+                                <div class="box_room-info" style="background-color:@Html.DisplayFor(modelItem => item.StatusRoom.StatusColor)">
+                                    <a class="box_room-modal" data-toggle="modal" data-target="#@item.RoomName">
+                                        <div class="box_room-label">
+                                            <h4>@Html.DisplayFor(modelItem => item.RoomName)</h4>
+                                        </div>
+                                        <div class="box_room-status">
+                                            <span>@Html.DisplayFor(modelItem => item.StatusRoom.StatusName)</span>
+                                        </div>
+                                    </a>
+                                </div>
+                            }
+                            else
+                            {
+                                foreach (var re in Model.LRevervations().Where(x => x.RoomId == item.RoomId))
+                                {
+                                    <div class="box_room-info" style="background-color:@Html.DisplayFor(modelItem => item.StatusRoom.StatusColor)">
+                                        <div class="box_room-label">
+                                            <h4>@Html.DisplayFor(modelItem => item.RoomName)</h4>
+                                        </div>
+                                        <div class="box_room-status">
+                                            <span>@Html.DisplayFor(modelItem => item.StatusRoom.StatusName)</span>
+                                        </div>
+                                    </div>
+                                    <div class="box_room-detail">
+                                        <a class="box_room-modal--active" data-toggle="modal" data-target="#@item.RoomName">
+                                            <table class="box_room-table">
+                                                <tr>
+                                                    <th>Người thuê: </th>
+                                                </tr>
+                                                <tr>
+                                                    <td><span class="box_room-span">@re.GuestName</span></td>
+                                                </tr>
+                                                <tr>
+                                                    <th>Check In: </th>
+                                                </tr>
+                                                <tr>
+                                                    <td><span class="box_room-span">@re.InDateTime</span></td>
+                                                </tr>
+                                            </table>
+                                        </a>
+                                    </div>
+                                }
+                            }
+                        </div>
+                    }
+                </div>
+            </div>
+        }
+        @foreach (var item in Model.LRooms())
+        {
+            <div class="modal fade" id="@item.RoomName" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLongTitle">Phòng @item.RoomName (@item.RoomType.TypeName)</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <p>Phòng @item.RoomName hiện đang là phòng @item.StatusRoom.StatusName</p>
+                        </div>
+                        <div class="modal-footer">
+                            @switch (item.StatusID)
+                            {
+                                case 1:
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Đóng</button>
+                                    <a href="@Url.Action("Choice","Revervation")" type="button" class="btn btn-primary">Đặt phòng</a>
+                                    break;
+                                case 2:
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Đóng</button>
+                                    @Html.RouteLink("Đã dọn dẹp", new { action = "Clean", controller = "Revervation", id = item.RoomId }, htmlAttributes: new { @class = "btn btn-primary" })
+                                    break;
+                                case 3:
+                                    foreach (var re in Model.LRevervations().Where(x => x.RoomId == item.RoomId))
+                                    {
+                                        <a href="@Url.Action("Edit","Revervation", new { id = re.ReverID})" type="button" class="btn btn-primary">Thêm dịch vụ</a>
+                                        <a href="@Url.Action("Details","Revervation", new { id = re.ReverID})" type="button" class="btn btn-primary">Chi tiết phòng</a>
+                                    }
+                                    break;
+                                case 4:
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Đóng</button>
+                                    <a href="@Url.Action("Choice","Revervation")" type="button" class="btn btn-primary">Hủy đặt phòng</a>
+                                    break;
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>

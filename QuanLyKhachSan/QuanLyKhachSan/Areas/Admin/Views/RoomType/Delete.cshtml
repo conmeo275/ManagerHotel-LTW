@@ -1,0 +1,62 @@
+﻿@model QuanLyKhachSan.Areas.Admin.Models.RoomType
+
+@{
+    ViewBag.Title = "Delete Room";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+<div class="container">
+    <br/>
+    <h2>Xóa loại phòng</h2>
+    <div class="form-horizontal">
+        <div class="form-group">
+            <div class=" col-md-4">
+                @Html.ActionLink("Quay lại danh sách chức năng", "Index")
+            </div>
+        </div>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.TypeName)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.TypeName)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.TypeImage)
+            </dt>
+
+            <dd>
+                <img style="height: 250px; width: auto;" src="~/Assets/images/@Html.DisplayFor(model => model.TypeImage)" />
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Description)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Description)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Price)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Price).ToString() VNĐ
+            </dd>
+
+        </dl>
+
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+
+            <div class="form-actions no-color">
+                <h3>Bạn có chắc chắn muốn xóa loại phòng này?</h3>
+                <input type="submit" value="Xóa" class="btn btn-danger" />
+            </div>
+        }
+    </div>
+</div>

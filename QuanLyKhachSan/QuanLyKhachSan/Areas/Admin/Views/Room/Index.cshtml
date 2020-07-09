@@ -1,0 +1,49 @@
+﻿@model IEnumerable<QuanLyKhachSan.Areas.Admin.Models.Room>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<div class="container">
+    <br />
+    <h2>Danh sách các phòng</h2>
+
+    <p>
+        @Html.ActionLink("Thêm mới phòng", "Create")
+    </p>
+    <table class="table table-light table-hover">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.RoomName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.StatusRoom.StatusName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.RoomType.TypeName)
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.RoomName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.StatusRoom.StatusName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.RoomType.TypeName)
+                </td>
+                <td>
+                    @Html.ActionLink("Sửa", "Edit", new { id = item.RoomId }) |
+                    @Html.ActionLink("Xóa", "Delete", new { id = item.RoomId })
+                </td>
+            </tr>
+        }
+
+    </table>
+</div>

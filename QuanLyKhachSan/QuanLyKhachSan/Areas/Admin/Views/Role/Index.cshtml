@@ -1,0 +1,43 @@
+﻿@model IEnumerable<QuanLyKhachSan.Areas.Admin.Models.Role>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<div class="container">
+    <br />
+    <h2>Danh sách các chức vụ</h2>
+
+    <p>
+        @Html.ActionLink("Tạo chức vụ mới", "Create")
+    </p>
+    <table class="table table-hover table-light">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.RoleName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.RoleDes)
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.RoleName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.RoleDes)
+                </td>
+                <td>
+                    @Html.ActionLink("Sửa", "Edit", new { id = item.RoleID }) |
+                    @Html.ActionLink("Chi tiết", "Details", new { id = item.RoleID }) |
+                    @Html.ActionLink("Xóa", "Delete", new { id = item.RoleID })
+                </td>
+            </tr>
+        }
+    </table>
+</div>

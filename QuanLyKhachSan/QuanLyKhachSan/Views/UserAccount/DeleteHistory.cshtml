@@ -1,0 +1,64 @@
+﻿@model QuanLyKhachSan.Models.OrderModel
+
+<div class="container container-custom">
+    <div class="form-horizontal">
+        <h2 class="container-header text-center text-uppercase text-secondary mb-0">Xóa lịch sử đặt phòng</h2>
+        <div class="divider-custom">
+            <div class="divider-custom-line"></div>
+            <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
+            <div class="divider-custom-line"></div>
+        </div>
+        <dl class="dl-horizontal form-group-input">
+            <dt>
+                @Html.DisplayNameFor(model => model.OrderDateTime)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.OrderDateTime)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.UserAccount.FullName)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.UserAccount.FullName)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.OrderRoom)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.OrderRoom)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.CheckIn)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.CheckIn)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.CheckOut)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.CheckOut)
+            </dd>
+
+        </dl>
+
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+            <div class="form-actions no-color form-group-input">
+                <h5>Bạn có chắc chắn muốn xóa lịch sử đặt phòng này?</h5>
+                <a href="@Url.Action("History","UserAccount", new { id = Model.UserID})" class="btn btn-primary">Quay lại</a>
+                <input type="submit" value="Xóa" class="btn btn-danger" />
+            </div>
+        }
+    </div>
+</div>

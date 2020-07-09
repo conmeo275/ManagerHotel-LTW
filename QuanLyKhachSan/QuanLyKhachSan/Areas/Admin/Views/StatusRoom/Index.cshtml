@@ -1,0 +1,45 @@
+﻿@model IEnumerable<QuanLyKhachSan.Areas.Admin.Models.StatusRoom>
+
+@{
+    ViewBag.Title = "List status";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<div class="container">
+    <br />
+    <h2>Danh sách các trạng thái phòng</h2>
+
+    <p>
+        @Html.ActionLink("Tạo trạng thái mới", "Create")
+    </p>
+    <hr/>
+    <table class="table table-light table-hover">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.StatusName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.StatusColor)
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.StatusName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.StatusColor)
+                </td>
+                <td>
+                    @Html.ActionLink("Sửa", "Edit", new { id = item.StatusID }) |
+                    @Html.ActionLink("Chi tiết", "Details", new { id = item.StatusID }) |
+                    @Html.ActionLink("Xóa", "Delete", new { id = item.StatusID })
+                </td>
+            </tr>
+        }
+
+    </table>
+</div>

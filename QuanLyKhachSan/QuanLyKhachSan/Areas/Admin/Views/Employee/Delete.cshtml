@@ -1,0 +1,69 @@
+﻿@model QuanLyKhachSan.Areas.Admin.Models.Employee
+
+@{
+    ViewBag.Title = "Delete Employee";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<div class="container">
+    <br />
+    <h2>Xóa nhân viên</h2>
+    <div class="form-horizontal">
+        <div class="form-group">
+            <div class=" col-md-4">
+                @Html.ActionLink("Quay lại danh sách", "Index")
+            </div>
+        </div>
+        <hr />
+        <dl class="dl-horizontal">
+            <div class="dl-horizontal-cus">
+                <dt>                    @Html.DisplayNameFor(model => model.Role.RoleName)                </dt>
+                <dd>                    @Html.DisplayFor(model => model.Role.RoleName)                </dd>
+            </div>
+
+            <div class="dl-horizontal-cus">
+                <dt>                    @Html.DisplayNameFor(model => model.EmpName)                </dt>
+                <dd>                    @Html.DisplayFor(model => model.EmpName)                </dd>
+            </div>
+
+            <div class="dl-horizontal-cus">
+                <dt>                    @Html.DisplayNameFor(model => model.EmpImage)                </dt>
+                <dd>                    <img style="height: 150px; width: auto;" src="~/Assets/images/@Html.DisplayFor(model => model.EmpImage)" />                </dd>
+            </div>
+
+            <div class="dl-horizontal-cus">
+                <dt>                    @Html.DisplayNameFor(model => model.EmpDayOfBirth)                </dt>
+                <dd>                    @Html.DisplayFor(model => model.EmpDayOfBirth)                </dd>
+            </div>
+
+            <div class="dl-horizontal-cus">
+                <dt>                    @Html.DisplayNameFor(model => model.EmpEmail)                </dt>
+                <dd>                    @Html.DisplayFor(model => model.EmpEmail)                </dd>
+            </div>
+
+            <div class="dl-horizontal-cus">
+                <dt>                    @Html.DisplayNameFor(model => model.EmpAddress)                </dt>
+                <dd>                    @Html.DisplayFor(model => model.EmpAddress)                </dd>
+            </div>
+
+            <div class="dl-horizontal-cus">
+                <dt>                    @Html.DisplayNameFor(model => model.EmpPhone)                </dt>
+                <dd>                    @Html.DisplayFor(model => model.EmpPhone)                </dd>
+            </div>
+
+            <div class="dl-horizontal-cus">
+                <dt>                    @Html.DisplayNameFor(model => model.EmpUserName)                </dt>
+                <dd>                    @Html.DisplayFor(model => model.EmpUserName)                </dd>
+            </div>
+        </dl>
+
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+            <div class="form-actions no-color ">
+                <h3>Bạn có chắc chắn muốn xóa nhân viên này?</h3>
+                <input type="submit" value="Xóa nhân viên" class="btn btn-danger" />
+            </div>
+        }
+    </div>
+</div>

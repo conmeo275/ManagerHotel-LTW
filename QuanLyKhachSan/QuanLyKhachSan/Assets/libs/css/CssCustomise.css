@@ -1,0 +1,112 @@
+﻿* {
+    /*font-family: 'Lato',Arial,sans-serif;*/
+}
+
+.sidebar-dark .nav-divider {
+    font-size: 14px;
+    font-weight: 600;
+}
+.container {
+    margin-bottom: 50px;
+}
+
+.dl-horizontal-cus {
+    width: 400px;
+    display: flex;
+    justify-content: space-between;
+}
+/*h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: 'Lato',Arial,sans-serif;
+}*/
+/* Box room */
+.box_room {
+    display: flex;
+    height: 84px;
+    border-radius: 2px;
+    border: solid 1px black;
+    margin-bottom: 8px;
+    padding: 0;
+    min-width: 335px;
+    max-width: 335px;
+}
+.box_room-info {
+    flex: 1;
+    width: 30%;
+    color: aliceblue;
+}
+.box_room-label h4 {
+    font-weight: 600;
+    text-align: center;
+    margin: 6px 0;
+    border-bottom: solid 1px #d9e3da;
+    color: aliceblue;
+}
+.box_room-status{
+    text-align: center;
+}
+.box_room-detail {
+    display: flex;
+    flex: 2;
+    align-items: center;
+    width: 70%;
+    background-color: #d9e3da;
+    color: black;
+}
+.box_room-table {
+    width: 100%;
+}
+.offset-md-1 {
+    margin-left: 16px;
+}
+.box_room-span {
+    display: block;
+    font-weight: 400;
+    text-align: center;
+}
+
+.box_room-modal {
+    color: white;
+    width: 100%;
+    cursor: pointer;
+}
+
+.box_room-modal--active {
+    color: black;
+    width: 100%;
+    cursor: pointer;
+}
+/***Button Modal***/
+.btn-modal {
+    display:flex;
+    justify-content: space-between;
+    width: 35%;
+    height: inherit;
+}
+.btn-modal-cus {
+    width: 45%;
+    color: black;
+}
+
+/* form group */
+.form-group-icon {
+    font-size: 30px;
+}
+
+.form-group-input {
+    display: flex;
+    justify-content: space-between;
+    width: 34%;
+}
+.form-group-input-btn {
+    min-width: 34%;
+    height: 38px;
+}
+
+.form-details-table {
+
+}

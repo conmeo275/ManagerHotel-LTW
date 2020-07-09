@@ -1,0 +1,44 @@
+﻿@using QuanLyKhachSan.Areas.Admin.Models
+@model UserDetails
+
+@{
+    ViewBag.Title = "Login";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="form-horizontal">
+
+    @using (Html.BeginForm("Login", "Authentication", FormMethod.Post))
+    {
+        <div class="container container-custom" style="width:unset">
+            <h2 class="container-header text-center text-uppercase text-secondary mb-0">Đăng nhập</h2>
+            <div class="divider-custom">
+                <div class="divider-custom-line"></div>
+                <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
+                <div class="divider-custom-line"></div>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(c => c.UserName, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-2">
+                    @Html.TextBoxFor(x => x.UserName, new { htmlAttributes = new { @class = "form-control" } })
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(c => c.Password, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-2">
+                    @Html.PasswordFor(x => x.Password, new { htmlAttributes = new { @class = "form-control" } })
+                </div>
+            </div>
+            <div class="form-group form-group-input">
+                <div class="col-md-offset-2 col-md-4">
+                    @Html.ValidationMessage("CredentialError", new { style = "color:red" })
+                    <input type="submit" name="btnSubmit" value="Login" /><br />
+                    <a href="/UserAccount/Register">Đăng ký</a>
+                </div>
+            </div>
+        </div>
+    }
+</div>
+
+
+

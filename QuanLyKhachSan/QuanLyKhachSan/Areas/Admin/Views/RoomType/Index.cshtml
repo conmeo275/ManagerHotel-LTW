@@ -1,0 +1,55 @@
+﻿@model IEnumerable<QuanLyKhachSan.Areas.Admin.Models.RoomType>
+
+@{
+    ViewBag.Title = "List type room";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<div class="container">
+    <br />
+    <h2>Danh sách các loại phòng</h2>
+
+    <p>
+        @Html.ActionLink("Thêm mới loại phòng", "Create")
+    </p>
+    <table class="table table-light table-hover">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.TypeName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TypeImage)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Description)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Price)
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TypeName)
+                </td>
+                <td>
+                    <img style="width: 180px; height: 130px;" src="~/Assets/images/@Html.DisplayFor(modelItem => item.TypeImage)" />
+                </td>
+                <td style="width:350px">
+                    @Html.DisplayFor(modelItem => item.Description)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Price) VNĐ
+                </td>
+                <td>
+                    @Html.ActionLink("Sửa", "Edit", new { id = item.TypeID }) |
+                    @Html.ActionLink("Chi tiết", "Details", new { id = item.TypeID }) |
+                    @Html.ActionLink("Xóa", "Delete", new { id = item.TypeID })
+                </td>
+            </tr>
+        }
+    </table>
+</div>

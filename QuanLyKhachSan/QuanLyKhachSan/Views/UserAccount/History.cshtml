@@ -1,0 +1,74 @@
+﻿@model IEnumerable<QuanLyKhachSan.Models.OrderModel>
+
+@{
+    ViewBag.Title = "Lịch sử đặt phòng";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="form-horizontal">
+    <div class="container container-custom" style="min-height: 600px">
+        <h2 class="container-header text-center text-uppercase text-secondary mb-0">Lịch sử đặt phòng</h2>
+        <div class="divider-custom">
+            <div class="divider-custom-line"></div>
+            <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
+            <div class="divider-custom-line"></div>
+        </div>
+        <table class="table table-hover table-light">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.OrderDateTime)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.OrderRoom)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.CheckIn)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.CheckOut)
+                </th>
+                <th>
+                    Trạng thái
+                </th>
+                <th></th>
+            </tr>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.OrderDateTime)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.OrderRoom)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.CheckIn)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.CheckOut)
+                    </td>
+                    <td>
+                        @if (item.Status == false)
+                        {
+                            <p>Đang xác nhân</p>
+                        }
+                        else
+                        {
+                            <p>Đã xác nhân</p>
+                        }
+                    </td>
+                    <td>
+                        @if (item.Status == false)
+                        {
+                            <a href="@Url.Action("DeleteHistory","UserAccount", new { id = item.OrderID })">Xóa</a>
+                        }
+                        else
+                        {
+                            
+                        }
+                    </td>
+                </tr>
+            }
+        </table>
+    </div>
+</div>

@@ -1,0 +1,97 @@
+﻿@model QuanLyKhachSan.Areas.Admin.Models.Revervation
+
+@{
+    ViewBag.Title = "Đặt phòng";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+<center>
+    <div class="container">
+        <br />
+        <h2>Đặt phòng</h2>
+
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+            <div class="form-horizontal">
+                <div class="form-group">
+                    <div class=" col-md-4">
+                        @Html.ActionLink("Quay lại", null, null, null, new { href = Request.UrlReferrer })
+                    </div>
+                </div>
+                <hr />
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                @if (ViewBag.Choice == 1)
+                {
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                    @Html.EditorFor(model => model.GuestName, new { htmlAttributes = new { @Value = "abc", @type = "hidden", @class = "form-control" } })
+                    @Html.EditorFor(model => model.GuestEmail, new { htmlAttributes = new { @Value = "abc@gmail.com", @type = "hidden", @class = "form-control" } })
+                    @Html.EditorFor(model => model.GuestCMND, new { htmlAttributes = new { @Value = 123456789, @type = "hidden", @class = "form-control" } })
+                    <h5> Khách hàng thân thiết </h5>
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.GuestPhone, "Số điện thoại", htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-4">
+                            @Html.EditorFor(model => model.GuestPhone, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.GuestPhone, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.RoomId, "Chọn phòng trống", htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-4">
+                            @Html.DropDownList("RoomId", null, htmlAttributes: new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.RoomId, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                }
+                else
+                {
+                    <h5> Khách vãng lai </h5>
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.GuestName, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-4">
+                            @Html.EditorFor(model => model.GuestName, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.GuestName, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.GuestEmail, "Email", htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-4">
+                            @Html.EditorFor(model => model.GuestEmail, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.GuestEmail, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.GuestPhone, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-4">
+                            @Html.EditorFor(model => model.GuestPhone, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.GuestPhone, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.GuestCMND, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-4">
+                            @Html.EditorFor(model => model.GuestCMND, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.GuestCMND, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.RoomId, "Chọn phòng trống", htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-4">
+                            @Html.DropDownList("RoomId", null, htmlAttributes: new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.RoomId, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                }
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-4">
+                        <input type="submit" value="Đặt phòng" class="btn btn-info" />
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</center>

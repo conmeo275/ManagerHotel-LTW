@@ -21,9 +21,26 @@ namespace QuanLyKhachSan
 
             bundles.Add(new ScriptBundle("~/bundles/bootstrap").Include(
                       "~/Scripts/bootstrap.js"));
-
+            //Admin
+            bundles.Add(new StyleBundle("~/Assets/css").Include(
+                      "~/Assets/vendor/bootstrap/css/bootstrap.min.css",
+                      "~/Assets/vendor/fonts/circular-std/style.css",
+                      "~/Assets/libs/css/style.css",
+                      "~/Assets/vendor/fonts/fontawesome/css/fontawesome-all.css",
+                      "~/Assets/libs/css/CssCustomise.css"));
+            bundles.Add(new ScriptBundle("~/bundlesB/jquery").Include(
+                        "~/Assets/vendor/jquery/jquery-3.3.1.min.js",
+                        "~/Assets/vendor/bootstrap/js/bootstrap.bundle.js",
+                        "~/Assets/vendor/slimscroll/jquery.slimscroll.js",
+                        "~/Assets/libs/js/main-js.js"));
+            //Client
             bundles.Add(new StyleBundle("~/Content/css").Include(
-                      "~/Content/site.css"));
+                      "~/Content/css/styles.css",
+                      "~/Content/Site.css"));
+            bundles.Add(new ScriptBundle("~/bundlesA/jquery").Include(
+                     "~/Content/assets/mail/jqBootstrapValidation.js",
+                     "~/Content/assets/mail/contact_me.js",
+                     "~/Content/js/scripts.js"));
         }
     }
 }

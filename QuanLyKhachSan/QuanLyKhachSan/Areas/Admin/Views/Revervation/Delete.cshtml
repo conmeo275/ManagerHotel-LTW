@@ -1,0 +1,55 @@
+﻿@model QuanLyKhachSan.Areas.Admin.Models.Revervation
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<div class="container">
+    <br/>
+    <center>
+        <h2>Bạn có muốn hủy đặt phòng này?</h2>
+
+        <div class="form-horizontal">
+            <div class="form-group">
+                <div class=" col-md-4">
+                    @Html.ActionLink("Quay lại danh sách phòng", "MultipleModel","HomeAdmin")
+                </div>
+            </div>
+            <hr />
+            <dl class="dl-horizontal">
+                <dt>
+                    @Html.DisplayNameFor(model => model.Room.RoomName)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Room.RoomName)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.GuestName)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.GuestName)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.InDateTime)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.InDateTime)
+                </dd>
+            </dl>
+
+            @using (Html.BeginForm())
+            {
+                @Html.AntiForgeryToken()
+                <div class="form-actions no-color">
+                    <input type="submit" value="Hủy đặt phòng" class="btn btn-danger" />
+                </div>
+            }
+        </div>
+    </center>
+</div>
